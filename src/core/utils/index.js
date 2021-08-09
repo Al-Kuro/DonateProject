@@ -1,8 +1,8 @@
 import moment from "moment";
 
-export const calculateSumOfNumbers = (arrayWithAmounts) => {
+export const calculateSumOfNumbers = (arrayWithObjs) => {
     let numbers = [];
-    arrayWithAmounts.forEach((amountObj) => {
+    arrayWithObjs.forEach((amountObj) => {
         numbers.push(amountObj.amount);
     });
     
@@ -12,5 +12,5 @@ export const calculateSumOfNumbers = (arrayWithAmounts) => {
 }
 
 export const getFormatedDate = (date) => {
-    moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
 }

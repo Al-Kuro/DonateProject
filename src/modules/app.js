@@ -16,10 +16,10 @@ export default class App {
     constructor() {
         this.state = {
             donates: mockDonates,
-            totalAmount: sumNumbers(mockDonates.amount), // возможно неправильно передал значения Amount
+            totalAmount: sumNumbers(mockDonates),
         };
 
-        this.#donateForm = new DonateForm(this.state.totalAmount);
+        this.#donateForm = new DonateForm(this.state.totalAmount, this.createNewDonate.bind(this));
         this.#donateList = new DonateList(this.state.donates);
     };
 
@@ -33,6 +33,6 @@ export default class App {
         this.state.donates.push(newDonate);
         this.state.totalAmount = this.state.totalAmount + newDonate.amount;
         this.#donateList.updateDonates(this.state.donates);
-        this.#donateForm.updateTotalAmount(newDonate.amount);
+        this.#donateForm.updateTotalAmount(this.state.totalAmount);
     }
 }

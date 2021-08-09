@@ -9,8 +9,14 @@ export class DonateList {
     };
 
     updateDonates(updateDonates) {
-        const $donatesContainerListDom = document.querySelector('.donates-container__donates'); // Нужно очищать этот лемент(возможно реализация неверна);
+        const $donatesContainerListDom = document.querySelector('.donates-container');
         $donatesContainerListDom.remove();
+        
+        const $donatesContainer = document.createElement('div');
+        $donatesContainer.className = 'donates-container';
+
+        const $donatesTitle = document.createElement('h2');
+        $donatesTitle.className = 'donates-container__title';
 
         const $donatesContainerList = document.createElement('div');
         $donatesContainerList.className = 'donates-container__donates';
@@ -22,7 +28,10 @@ export class DonateList {
             $donatesContainerList.append($donateItem);
         });
 
-    }
+        $donatesContainer.append($donatesTitle, $donatesContainerList);
+        document.body.append($donatesContainer);
+
+    };
 
     render() {
         const $donatesContainer = document.createElement('div');
